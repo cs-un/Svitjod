@@ -77,7 +77,7 @@ public class MainMenuScreen implements Screen {
 			public void touchUp (InputEvent event, float x, float y, int pointer, int button) {
 				if(isOver(button1, x, y)){	
 					buttonClicked = true;
-					//main.setScreen(new GameScreen(game, mms, false));
+					main.setScreen(new GameScreen(main, mms));
 				}
 			}
 		});
