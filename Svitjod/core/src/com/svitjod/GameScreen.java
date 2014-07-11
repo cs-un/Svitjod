@@ -1,28 +1,50 @@
 package com.svitjod;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen implements Screen, InputProcessor {
 	private Screen previous;
 	private Main main;
 	private SpriteBatch batch;
-	
+	private Map map;
+	private int h, w;
+	private OrthographicCamera camera;
 	public GameScreen(Main main, MainMenuScreen mms) {
 		previous = mms;
 		this.main = main;
 		batch = new SpriteBatch();
+		map = new Map("Uppsala");
+		
+		Gdx.input.setInputProcessor(this);
+		w = Gdx.graphics.getWidth();
+		h = Gdx.graphics.getHeight();
+		camera = new OrthographicCamera(1, h/w);
+		camera.setToOrtho(false, w, h);
 	}
 
 	private void update()
 	{
-		
+		map.update();
+		camera.update();
+		//ui.update();
 	}
 
 	@Override
 	public void render(float delta) {
+		Gdx.gl.glClearColor(1, 1, 1, 1);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		update();
+
+		main.batch.setProjectionMatrix(camera.combined);
+		main.batch.begin();
+		
+		main.batch.end();
 	}
 	
 	@Override
