@@ -3,13 +3,35 @@ package com.svitjod;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public class Map {
-
+	private ArrayList<ArrayList<Object>> map = new ArrayList<ArrayList<Object>>(); 
 	public Map(String level) {
 		//gör inget med stringen än.. senare ladda levels från filer?
 		//ladda banan
+		// 16711935 = grass, -2108346881 = road, -917249 = barley, 
+		// -1010580481 = "construction site", 1244732159 = 3x3 house,
+		// -1555454721 = 7x7 house
+		Texture loadinglevel = new Texture(Gdx.files.internal("maps/" + level + ".png"));
+		loadinglevel.getTextureData().prepare();
+		Pixmap temp = loadinglevel.getTextureData().consumePixmap();
+		for(int i = 0; i < loadinglevel.getWidth(); i++){
+			for(int j = 0; j < loadinglevel.getHeight(); j++){
+				int currenttile = j*loadinglevel.getWidth()+i;
+				map.set(currenttile, new ArrayList<Object>());
+				if(temp.getPixel(i, j) == 16711935){
+					map.get(currenttile).add(1);
+				}else
+				{
+					map.get(currenttile).add(0);
+				}
+			}
+		}
+		
 	}
 	
 	public void update()
