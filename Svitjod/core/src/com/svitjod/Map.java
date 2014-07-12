@@ -19,10 +19,10 @@ public class Map {
 		Texture loadinglevel = new Texture(Gdx.files.internal("maps/" + level + ".png"));
 		loadinglevel.getTextureData().prepare();
 		Pixmap temp = loadinglevel.getTextureData().consumePixmap();
-		for(int i = 0; i < loadinglevel.getWidth(); i++){
-			for(int j = 0; j < loadinglevel.getHeight(); j++){
+		for(int j = 0; j < loadinglevel.getHeight(); j++){
+			for(int i = 0; i < loadinglevel.getWidth(); i++){
 				int currenttile = j*loadinglevel.getWidth()+i;
-				map.set(currenttile, new ArrayList<Object>());
+				map.add(currenttile, new ArrayList<Object>());
 				if(temp.getPixel(i, j) == 16711935){
 					map.get(currenttile).add(1);
 				}else
