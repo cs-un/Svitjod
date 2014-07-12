@@ -1,11 +1,14 @@
 package com.svitjod;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameScreen implements Screen, InputProcessor {
@@ -15,12 +18,13 @@ public class GameScreen implements Screen, InputProcessor {
 	private Map map;
 	private int h, w;
 	private OrthographicCamera camera;
+	private Texture tex;
 	public GameScreen(Main main, MainMenuScreen mms) {
 		previous = mms;
 		this.main = main;
 		batch = new SpriteBatch();
 		map = new Map("Uppsala");
-		
+		tex = new Texture(Gdx.files.internal("badlogic.jpg"));
 		Gdx.input.setInputProcessor(this);
 		w = Gdx.graphics.getWidth();
 		h = Gdx.graphics.getHeight();
@@ -43,7 +47,8 @@ public class GameScreen implements Screen, InputProcessor {
 
 		main.batch.setProjectionMatrix(camera.combined);
 		main.batch.begin();
-		
+		Sprite s = new Sprite(tex);
+		s.draw(main.batch);
 		main.batch.end();
 	}
 	
@@ -55,6 +60,8 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public boolean keyUp(int keycode) {
+		if(keycode==Keys.A)
+			camera.rotate(-45);
 		// TODO Auto-generated method stub
 		return false;
 	}
