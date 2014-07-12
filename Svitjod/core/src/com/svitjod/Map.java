@@ -23,11 +23,12 @@ public class Map {
 			for(int i = 0; i < loadinglevel.getWidth(); i++){
 				int currenttile = j*loadinglevel.getWidth()+i;
 				map.add(currenttile, new ArrayList<Object>());
-				if(temp.getPixel(i, j) == 16711935){
+				switch (temp.getPixel(i, j)){
+				case 16711935:
 					map.get(currenttile).add(1);
-				}else
-				{
-					map.get(currenttile).add(0);
+					break;
+				default:
+					break;
 				}
 			}
 		}
