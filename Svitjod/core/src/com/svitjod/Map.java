@@ -26,7 +26,7 @@ public class Map {
 		Pixmap temp = loadinglevel.getTextureData().consumePixmap();
 		for(int j = 0; j < loadinglevel.getHeight(); j++){
 			for(int i = 0; i < loadinglevel.getWidth(); i++){
-				System.out.println(temp.getPixel(i, j));
+				//System.out.println(temp.getPixel(i, j));
 				int currenttile = j * loadinglevel.getWidth() + i;
 				map.add(currenttile, new ArrayList<Things>());
 				switch (temp.getPixel(i, j)){
