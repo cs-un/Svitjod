@@ -59,7 +59,7 @@ public class GameScreen implements Screen, InputProcessor {
 			}
 		}
 		Sprite s = new Sprite(tex);
-		s.draw(main.batch);
+		//s.draw(main.batch);
 		main.batch.end();
 	}
 	

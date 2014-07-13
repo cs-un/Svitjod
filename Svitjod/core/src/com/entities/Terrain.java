@@ -22,7 +22,7 @@ public class Terrain implements Things {
 			break;
 		}
 		s = new Sprite(tex);
-		s.setPosition(tileNr * s.getWidth(), tileNr * s.getHeight()); // det här är fel
+		s.setPosition((tileNr%100) * s.getWidth() / 2, (tileNr/100) * s.getHeight() - (tileNr%100) * s.getHeight() / 2); // det här är fel
 		//tileNumber++;
 	}
 

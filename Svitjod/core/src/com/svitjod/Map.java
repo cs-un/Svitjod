@@ -25,17 +25,17 @@ public class Map {
 		Pixmap temp = loadinglevel.getTextureData().consumePixmap();
 		for(int j = 0; j < loadinglevel.getHeight(); j++){
 			for(int i = 0; i < loadinglevel.getWidth(); i++){
-				int currenttile = j*loadinglevel.getWidth()+i;
+				int currenttile = j * loadinglevel.getWidth() + i;
 				map.add(currenttile, new ArrayList<Things>());
-				/**switch (temp.getPixel(i, j)){
+				switch (temp.getPixel(i, j)){
 				case GRASS:
-					map.get(currenttile).add(new Terrain(GRASS));
+					map.get(currenttile).add(new Terrain(GRASS, currenttile));
 					break;
 				default:
 					break;
 				}
-				*/
-				map.get(currenttile).add(new Terrain(temp.getPixel(i, j), currenttile));
+				
+				//map.get(currenttile).add(new Terrain(temp.getPixel(i, j), currenttile));
 			}
 		}
 		
