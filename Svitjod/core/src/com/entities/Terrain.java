@@ -27,7 +27,7 @@ public class Terrain implements Things {
 			break;
 		}
 		s = new Sprite(tex);
-		s.setPosition((tileNr % 100 + tileNr / 100) * s.getWidth() / 2, (tileNr / 100 - tileNr % 100) * s.getHeight() / 2); // det här är fel
+		//s.setPosition((tileNr % 100 + tileNr / 100) * s.getWidth() / 2, (tileNr / 100 - tileNr % 100) * s.getHeight() / 2); // det här är fel
 		tileNumber = tileNr;
 		s.setPosition((xtile + ytile) * s.getWidth() / 2, (ytile - xtile) * s.getHeight() / 2); // det här är fel
 	}
