@@ -9,9 +9,9 @@ public class Terrain implements Things {
 	private int x, y, z;
 	private Texture tex;
 	private Sprite s;
-	private static int tileNumber = 1;
+	//private static int tileNumber = 1;
 	
-	public Terrain(int type) {
+	public Terrain(int type, int tileNr) {
 		switch(type){
 		case Map.GRASS:
 			tex = new Texture(Gdx.files.internal("terrain/tiles/testruta.png"));
@@ -22,8 +22,8 @@ public class Terrain implements Things {
 			break;
 		}
 		s = new Sprite(tex);
-		s.setPosition(tileNumber * s.getWidth(), tileNumber * s.getHeight()); // det här är fel
-		tileNumber++;
+		s.setPosition(tileNr * s.getWidth(), tileNr * s.getHeight()); // det här är fel
+		//tileNumber++;
 	}
 
 	@Override

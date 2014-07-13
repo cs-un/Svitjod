@@ -27,13 +27,15 @@ public class Map {
 			for(int i = 0; i < loadinglevel.getWidth(); i++){
 				int currenttile = j*loadinglevel.getWidth()+i;
 				map.add(currenttile, new ArrayList<Things>());
-				switch (temp.getPixel(i, j)){
+				/**switch (temp.getPixel(i, j)){
 				case GRASS:
 					map.get(currenttile).add(new Terrain(GRASS));
 					break;
 				default:
 					break;
 				}
+				*/
+				map.get(currenttile).add(new Terrain(temp.getPixel(i, j), currenttile));
 			}
 		}
 		
