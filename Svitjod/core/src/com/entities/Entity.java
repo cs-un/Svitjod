@@ -1,15 +1,23 @@
 package com.entities;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public abstract class Entity implements Things {
 	protected int x, y, z;
 	protected int tileNumber;
+	protected Sprite s;
+	protected Texture idleTexture, currentTexture;
+	
+	public Entity(int tile)
+	{
+		tileNumber = tile;
+	}
 	
 	@Override
 	public Sprite getSprite() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Sprite(currentTexture);
 	}
 
 	@Override
