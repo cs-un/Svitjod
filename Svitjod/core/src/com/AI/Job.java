@@ -10,4 +10,9 @@ public class Job {
 	{
 		this.workplace = workplace;
 	}
+	
+	public Goal getGoal()
+	{
+		return workplace.getWork();
+	}
 }
