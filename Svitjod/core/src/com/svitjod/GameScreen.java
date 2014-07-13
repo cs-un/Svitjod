@@ -33,6 +33,8 @@ public class GameScreen implements Screen, InputProcessor {
 		h = Gdx.graphics.getHeight();
 		camera = new OrthographicCamera(1, h/w);
 		camera.setToOrtho(false, w, h);
+		camera.position.x += 1500;
+		camera.position.y -= 500;
 	}
 
 	private void update()

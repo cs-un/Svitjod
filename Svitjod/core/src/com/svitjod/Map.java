@@ -7,13 +7,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.entities.Building;
 import com.entities.Terrain;
 import com.entities.Things;
 
 public class Map {
 	private ArrayList<ArrayList<Things>> map = new ArrayList<ArrayList<Things>>(); 
-	public static final int GRASS = 16711935, ROAD = -2108346881, BARLEY = -917249, CONSTRUCTION = -1010580481;
-	
+	public static final int GRASS = 16711935, ROAD = -2108346881, BARLEY = -917249, CONSTRUCTION = -1010580481, HOUSE3X3 = 1244732159, HOUSE7X7 = -1555454721;
+	public static final int tileWidth = 50, tileHeight = 30;
 	public Map(String level) {
 		//gör inget med stringen än.. senare ladda levels från filer?
 		//ladda banan
@@ -35,11 +36,16 @@ public class Map {
 				case ROAD:
 					map.get(currenttile).add(new Terrain(ROAD, currenttile));
 					break;
+				case HOUSE3X3:
+					map.get(currenttile).add(new Building(HOUSE3X3, currenttile));
+					break;
+				case CONSTRUCTION:
+					// do nothing
+					break;
 				default:
 					map.get(currenttile).add(new Terrain(temp.getPixel(i, j), currenttile));
 					break;
 				}
-				map.get(currenttile).add(new Terrain(temp.getPixel(i, j), currenttile));
 			}
 		}
 		
