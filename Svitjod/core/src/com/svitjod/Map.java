@@ -32,10 +32,9 @@ public class Map {
 					map.get(currenttile).add(new Terrain(GRASS, currenttile));
 					break;
 				default:
+					map.get(currenttile).add(new Terrain(temp.getPixel(i, j), currenttile));
 					break;
 				}
-				
-				//map.get(currenttile).add(new Terrain(temp.getPixel(i, j), currenttile));
 			}
 		}
 		
