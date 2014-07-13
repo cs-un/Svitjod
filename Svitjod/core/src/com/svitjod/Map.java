@@ -7,9 +7,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.entities.Terrain;
+import com.entities.Things;
 
 public class Map {
-	private ArrayList<ArrayList<Object>> map = new ArrayList<ArrayList<Object>>(); 
+	private ArrayList<ArrayList<Things>> map = new ArrayList<ArrayList<Things>>(); 
+	public static final int GRASS = 16711935, ROAD = -2108346881, BARLEY = -917249, CONSTRUCTION = -1010580481;
+	
 	public Map(String level) {
 		//gör inget med stringen än.. senare ladda levels från filer?
 		//ladda banan
@@ -22,10 +26,10 @@ public class Map {
 		for(int j = 0; j < loadinglevel.getHeight(); j++){
 			for(int i = 0; i < loadinglevel.getWidth(); i++){
 				int currenttile = j*loadinglevel.getWidth()+i;
-				map.add(currenttile, new ArrayList<Object>());
+				map.add(currenttile, new ArrayList<Things>());
 				switch (temp.getPixel(i, j)){
-				case 16711935:
-					map.get(currenttile).add(1);
+				case GRASS:
+					map.get(currenttile).add(new Terrain(GRASS));
 					break;
 				default:
 					break;
@@ -40,12 +44,12 @@ public class Map {
 		//vill vi uppdatera entities här?
 	}
 	
-	public ArrayList<ArrayList<Sprite>> tiles()
+	public ArrayList<ArrayList<Things>> tiles()
 	{
 		//vi vill nog endast returnera listan här
 		//uppdatera listan i entities metoder senare?
 		//tror arraylist blir bäst för det här men inte 100%, kan vara bättre med någon hashmap eller dylikt
-		return null;
+		return map;
 	}
 
 }

@@ -1,14 +1,35 @@
 package com.entities;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.svitjod.Map;
 
 public class Terrain implements Things {
 	private int x, y, z;
+	private Texture tex;
+	private Sprite s;
+	private static int tileNumber = 1;
 	
+	public Terrain(int type) {
+		switch(type){
+		case Map.GRASS:
+			tex = new Texture(Gdx.files.internal("terrain/tiles/testruta.png"));
+			break;
+		default:
+			tex = new Texture(Gdx.files.internal("terrain/tiles/missingtexture.png"));
+			System.out.println("Terrain was loaded without proper code or texture is missing!");
+			break;
+		}
+		s = new Sprite(tex);
+		s.setPosition(tileNumber * s.getWidth(), tileNumber * s.getHeight()); // det här är fel
+		tileNumber++;
+	}
+
 	@Override
 	public Sprite getSprite() {
 		// TODO Auto-generated method stub
-		return null;
+		return s;
 	}
 
 	@Override

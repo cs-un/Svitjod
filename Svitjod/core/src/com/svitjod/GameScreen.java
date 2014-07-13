@@ -1,5 +1,7 @@
 package com.svitjod;
 
+import java.util.ArrayList;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputProcessor;
@@ -10,6 +12,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.entities.Things;
 
 public class GameScreen implements Screen, InputProcessor {
 	private Screen previous;
@@ -47,6 +50,13 @@ public class GameScreen implements Screen, InputProcessor {
 
 		main.batch.setProjectionMatrix(camera.combined);
 		main.batch.begin();
+		for(ArrayList<Things> at : map.tiles())
+		{
+			for(Things t : at)
+			{
+				t.getSprite().draw(main.batch);
+			}
+		}
 		Sprite s = new Sprite(tex);
 		s.draw(main.batch);
 		main.batch.end();
