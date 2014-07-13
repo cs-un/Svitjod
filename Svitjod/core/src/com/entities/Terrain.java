@@ -9,7 +9,7 @@ public class Terrain implements Things {
 	private int x, y, z;
 	private Texture tex;
 	private Sprite s;
-	//private static int tileNumber = 1;
+	private int tileNumber;
 	
 	public Terrain(int type, int tileNr) {
 		switch(type){
@@ -23,7 +23,7 @@ public class Terrain implements Things {
 		}
 		s = new Sprite(tex);
 		s.setPosition((tileNr % 100 + tileNr / 100) * s.getWidth() / 2, (tileNr / 100 - tileNr % 100) * s.getHeight() / 2); // det här är fel
-		//tileNumber++;
+		tileNumber = tileNr;
 	}
 
 	@Override
@@ -63,6 +63,11 @@ public class Terrain implements Things {
 	@Override
 	public void setZ(int z) {
 		this.z = z;
+	}
+
+	@Override
+	public int getTile() {
+		return tileNumber;
 	}
 
 
