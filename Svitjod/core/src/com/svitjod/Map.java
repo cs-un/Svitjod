@@ -12,6 +12,7 @@ import com.entities.Terrain;
 import com.entities.Things;
 
 public class Map {
+	public static int mapWidth, mapHeight;
 	private ArrayList<ArrayList<Things>> map = new ArrayList<ArrayList<Things>>(); 
 	public static final int GRASS = 16711935, ROAD = -2108346881, BARLEY = -917249, CONSTRUCTION = -1010580481, HOUSE3X3 = 1244732159, HOUSE7X7 = -1555454721;
 	public static final int tileWidth = 50, tileHeight = 30;
@@ -24,11 +25,17 @@ public class Map {
 		Texture loadinglevel = new Texture(Gdx.files.internal("maps/" + level + ".png"));
 		loadinglevel.getTextureData().prepare();
 		Pixmap temp = loadinglevel.getTextureData().consumePixmap();
-		for(int j = 0; j < loadinglevel.getHeight(); j++){
-			for(int i = 0; i < loadinglevel.getWidth(); i++){
+		mapWidth = loadinglevel.getWidth();
+		mapHeight = loadinglevel.getHeight();
+		for(int j = 0; j < mapHeight; j++){
+			for(int i = 0; i < mapWidth; i++){
+				map.add(j * loadinglevel.getWidth() + i, new ArrayList<Things>());
+			}
+		}
+		for(int j = 0; j < mapHeight; j++){
+			for(int i = 0; i < mapWidth; i++){
 				//System.out.println(temp.getPixel(i, j));
-				int currenttile = j * loadinglevel.getWidth() + i;
-				map.add(currenttile, new ArrayList<Things>());
+				int currenttile = j * mapHeight + i;
 				switch (temp.getPixel(i, j)){
 				case GRASS:
 					map.get(currenttile).add(new Terrain(GRASS, currenttile));

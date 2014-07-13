@@ -52,12 +52,20 @@ public class GameScreen implements Screen, InputProcessor {
 
 		main.batch.setProjectionMatrix(camera.combined);
 		main.batch.begin();
+		/*ArrayList<ArrayList<Things>> tempList = map.tiles();
+		for(int i = 0; i < tempList.size(); i++)
+		{
+			for(Things t : tempList.get((i % Map.mapHeight) * Map.mapWidth + (i / Map.mapWidth)))
+			{
+				t.getSprite().draw(main.batch);
+			}
+		}
+			*/
 		for(ArrayList<Things> at : map.tiles())
 		{
 			for(Things t : at)
 			{
 				t.getSprite().draw(main.batch);
-				//System.out.println("s"); // om sprites inte ritas upp av någon anledning så ta bort kommentaren på println här så kommer det fungera. varför? ingen aning
 			}
 		}
 		Sprite s = new Sprite(tex);
