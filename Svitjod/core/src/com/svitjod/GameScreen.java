@@ -72,7 +72,13 @@ public class GameScreen implements Screen, InputProcessor {
 	@Override
 	public boolean keyUp(int keycode) {
 		if(keycode==Keys.A)
-			camera.rotate(-45);
+			camera.position.x -= 5;
+		if(keycode==Keys.D)
+			camera.position.x += 5;
+		if(keycode==Keys.S)
+			camera.position.y -= 5;
+		if(keycode==Keys.W)
+			camera.position.y += 5;
 		// TODO Auto-generated method stub
 		return false;
 	}
