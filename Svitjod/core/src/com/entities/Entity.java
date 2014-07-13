@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 
 public abstract class Entity implements Things {
 	protected int x, y, z;
+	protected int tileNumber;
 	
 	@Override
 	public Sprite getSprite() {
@@ -42,6 +43,11 @@ public abstract class Entity implements Things {
 	@Override
 	public void setZ(int z) {
 		this.z = z;
+	}
+	
+	@Override
+	public int getTile() {
+		return tileNumber;
 	}
 	
 	public abstract void update();
