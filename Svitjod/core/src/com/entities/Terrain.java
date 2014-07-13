@@ -12,9 +12,14 @@ public class Terrain implements Things {
 	//private static int tileNumber = 1;
 	
 	public Terrain(int type, int tileNr) {
+		int xtile = tileNr % 100;
+		int ytile = 100 - tileNr / 100;
 		switch(type){
 		case Map.GRASS:
 			tex = new Texture(Gdx.files.internal("terrain/tiles/testruta.png"));
+			break;
+		case Map.ROAD:
+			tex = new Texture(Gdx.files.internal("terrain/tiles/testvag.png"));
 			break;
 		default:
 			tex = new Texture(Gdx.files.internal("terrain/tiles/missingtexture.png"));
@@ -22,7 +27,7 @@ public class Terrain implements Things {
 			break;
 		}
 		s = new Sprite(tex);
-		s.setPosition((tileNr % 100 + tileNr / 100) * s.getWidth() / 2, (tileNr / 100 - tileNr % 100) * s.getHeight() / 2); // det här är fel
+		s.setPosition((xtile + ytile) * s.getWidth() / 2, (ytile - xtile) * s.getHeight() / 2); // det här är fel
 		//tileNumber++;
 	}
 
