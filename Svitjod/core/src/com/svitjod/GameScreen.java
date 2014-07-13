@@ -22,6 +22,7 @@ public class GameScreen implements Screen, InputProcessor {
 	private int h, w;
 	private OrthographicCamera camera;
 	private Texture tex;
+	private int xAcc = 0, yAcc = 0;
 	public GameScreen(Main main, MainMenuScreen mms) {
 		previous = mms;
 		this.main = main;
@@ -40,6 +41,8 @@ public class GameScreen implements Screen, InputProcessor {
 	private void update()
 	{
 		map.update();
+		camera.position.x += xAcc;
+		camera.position.y += yAcc;
 		camera.update();
 		//ui.update();
 	}
@@ -75,20 +78,27 @@ public class GameScreen implements Screen, InputProcessor {
 	
 	@Override
 	public boolean keyDown(int keycode) {
-		// TODO Auto-generated method stub
+		if(keycode==Keys.A)
+			xAcc -= 50;
+		if(keycode==Keys.D)
+			xAcc += 50;
+		if(keycode==Keys.S)
+			yAcc -= 50;
+		if(keycode==Keys.W)
+			yAcc += 50;
 		return false;
 	}
 
 	@Override
 	public boolean keyUp(int keycode) {
 		if(keycode==Keys.A)
-			camera.position.x -= 50;
+			xAcc += 50;
 		if(keycode==Keys.D)
-			camera.position.x += 50;
+			xAcc -= 50;
 		if(keycode==Keys.S)
-			camera.position.y -= 50;
+			yAcc += 50;
 		if(keycode==Keys.W)
-			camera.position.y += 50;
+			yAcc -= 50;
 		if(keycode==Keys.Q)
 			camera.zoom += 0.2f;
 		if(keycode==Keys.E)
@@ -129,7 +139,10 @@ public class GameScreen implements Screen, InputProcessor {
 
 	@Override
 	public boolean scrolled(int amount) {
-		// TODO Auto-generated method stub
+		if(amount==-1)
+			camera.zoom -= 0.2f;
+		else
+			camera.zoom +=0.2f;
 		return false;
 	}
 
