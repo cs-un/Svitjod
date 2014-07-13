@@ -55,6 +55,7 @@ public class GameScreen implements Screen, InputProcessor {
 			for(Things t : at)
 			{
 				t.getSprite().draw(main.batch);
+				//System.out.println("s"); // om sprites inte ritas upp av någon anledning så ta bort kommentaren på println här så kommer det fungera. varför? ingen aning
 			}
 		}
 		Sprite s = new Sprite(tex);
