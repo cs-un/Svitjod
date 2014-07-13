@@ -1,12 +1,13 @@
 package com.AI;
 
-import com.entities.Building;
+import com.buildings.Building;
+import com.buildings.productionBuilding;
 
 public class Job {
 
-	private Building workplace;
+	private productionBuilding workplace;
 	
-	public Job(Building workplace)
+	public Job(productionBuilding workplace)
 	{
 		this.workplace = workplace;
 	}

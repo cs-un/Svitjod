@@ -7,7 +7,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.entities.Building;
+import com.buildings.Building;
+import com.buildings.decorativeBuilding;
+import com.buildings.houseBuilding;
 import com.entities.Terrain;
 import com.entities.Things;
 
@@ -44,7 +46,7 @@ public class Map {
 					map.get(currenttile).add(new Terrain(ROAD, currenttile));
 					break;
 				case HOUSE3X3:
-					map.get(currenttile).add(new Building(HOUSE3X3, currenttile));
+					map.get(currenttile).add(new houseBuilding(HOUSE3X3, currenttile));
 					break;
 				case CONSTRUCTION:
 					// do nothing

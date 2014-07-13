@@ -17,7 +17,7 @@ public abstract class Entity implements Things {
 	@Override
 	public Sprite getSprite() {
 		// TODO Auto-generated method stub
-		return new Sprite(currentTexture);
+		return s;
 	}
 
 	@Override
