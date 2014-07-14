@@ -41,8 +41,9 @@ public class GameScreen implements Screen, InputProcessor {
 	private void update()
 	{
 		map.update();
-		camera.position.x += xAcc;
-		camera.position.y += yAcc;
+		//camera.position.x += xAcc;
+		//camera.position.y += yAcc;
+		camera.translate(xAcc, yAcc); //exakt samma som ovan
 		camera.update();
 		//ui.update();
 	}

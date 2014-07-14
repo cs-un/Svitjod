@@ -8,6 +8,7 @@ public abstract class Entity implements Things {
 	protected int tileNumber;
 	protected Sprite s;
 	protected Texture idleTexture, currentTexture;
+	protected String name;
 	
 	public Entity(int tile)
 	{
@@ -60,4 +61,8 @@ public abstract class Entity implements Things {
 	
 	public abstract void update();
 	
+	public String getName()
+	{
+		return name;
+	}
 }

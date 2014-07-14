@@ -23,11 +23,13 @@ public abstract class Building extends Entity {
 			tex = new Texture(Gdx.files.internal("buildings/testhus3x3(4).png"));
 			offsetX = -50;
 			offsetY = 1;
+			name = "Regular House";
 			break;
 		default:
 			tex = new Texture(Gdx.files.internal("buildings/testhus3x3.png"));
 			offsetX = -40;
 			offsetY = +10;
+			name = "Unknown Building";
 			break;
 		}
 		s = new Sprite(tex);

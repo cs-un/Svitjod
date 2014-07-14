@@ -1,5 +1,6 @@
 package com.svitjod;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
@@ -10,14 +11,20 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.buildings.Building;
 import com.buildings.decorativeBuilding;
 import com.buildings.houseBuilding;
+import com.entities.Entity;
+import com.entities.Person;
 import com.entities.Terrain;
 import com.entities.Things;
 
 public class Map {
 	public static int mapWidth, mapHeight;
 	private ArrayList<ArrayList<Things>> map = new ArrayList<ArrayList<Things>>(); 
+	private ArrayList<Entity> entities = new ArrayList<Entity>();
+	private long lastSpawn;
+	private int popboost = 5; //growth of population every 60 seconds
 	public static final int GRASS = 16711935, ROAD = -2108346881, BARLEY = -917249, CONSTRUCTION = -1010580481, HOUSE3X3 = 1244732159, HOUSE7X7 = -1555454721;
 	public static final int tileWidth = 50, tileHeight = 30;
+	
 	public Map(String level) {
 		//gör inget med stringen än.. senare ladda levels från filer?
 		//ladda banan
@@ -63,6 +70,38 @@ public class Map {
 	public void update()
 	{
 		//vill vi uppdatera entities här?
+		createPeople();
+		for(Entity e : entities)
+		{
+			e.update();
+		}
+	}
+	
+	private void createPeople() {
+		int n = newPeople();
+		for(int i = 0; i < n; ++i)
+		{
+			Person p = new Person(80, 'm', 25, "Sven"); // ändra det här lite sen!! kanske ska namnet skapas i personklassen istället.
+			entities.add(p);
+			map.get(i).add(p);
+			System.out.println("Person " + p.getName() + " spawned");
+		}
+		
+	}
+
+	private int newPeople() {
+		int n = 0;
+		if(System.currentTimeMillis()-lastSpawn > 60000)
+		{
+			n+=popboost;
+			lastSpawn = System.currentTimeMillis();
+		}
+		return n;
+	}
+
+	public void modPopBoost(int mod)
+	{
+		popboost+=mod;
 	}
 	
 	public ArrayList<ArrayList<Things>> tiles()
